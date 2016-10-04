@@ -13,6 +13,11 @@ public class Client{
 			new GetMessage(socket).start();
 			new SendMessage(socket).start();
 		}
+		void file() throws IOException{
+			Socket socket = new Socket(ip, 4700);
+			new GetFile(socket).start();
+			new SendFile(socket).start();
+		}
 	public static void main(String args[]) throws IOException{
 		Client client = new Client(args[0]);
 		System.out.println("Please input c(chat) or f(file transfer)");
@@ -20,8 +25,15 @@ public class Client{
 		Scanner sc = new Scanner(System.in);
 		cmd = sc.next();
 		switch(cmd){
-			case "c":
-			 client.startWork();
+			case "c":{
+				 client.startWork();
+				 System.out.println("Typing again to confirm it.");
+				 break;
+			 }
+			case "f":{
+				client.file();
+				break;
+			}
 		}while(!cmd.equals("q"));
 		sc.close();
 	}

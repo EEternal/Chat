@@ -11,6 +11,8 @@ public class GetMessage extends Thread{
 			try{
 				BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				String line = is.readLine();
+//				if(line.equals("c"))
+//					line = is.readLine();
 				while(!line.equals("bye")){
 					System.out.println(line);
 					line = is.readLine();

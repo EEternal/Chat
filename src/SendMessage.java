@@ -12,7 +12,14 @@ public class SendMessage extends Thread{
 			BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
 			PrintWriter os = new PrintWriter(socket.getOutputStream());
 			String line = sin.readLine();
+//			boolean flag1 = true;
+//			String flag2 = "c";
 			while(!line.equals("bye")){
+//				if(flag1){
+//					os.println(flag2);
+//					os.flush();
+//					flag1 = false;
+//				}
 				os.println(line);
 				os.flush();
 				line = sin.readLine();

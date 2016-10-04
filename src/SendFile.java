@@ -17,7 +17,7 @@ public class SendFile extends Thread{
 				os.println(new String(buffer, 0, c));
 				os.flush();
 			}
-			os.close();
+// 			os.close();
 			rf.close();
 		}catch(IOException e){
 			System.out.println(e);

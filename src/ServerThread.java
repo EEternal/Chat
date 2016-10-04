@@ -17,7 +17,7 @@ public class ServerThread extends Thread{
 			String str = is.readLine();
 			if(str.equals("c"))
 				chat();
-			if(str.equals("f"))
+			if(str.equals("f") || str.equals("g"))
 				file();
 			is.close();
 		}catch(Exception e){

@@ -8,20 +8,38 @@ public class SendFile extends Thread{
 			this.socket = socket;
 		}
 	public void run(){
-		try{
-			int n = 512, c = 0;
-			FileInputStream rf = new FileInputStream("/home/nightwatcher/workspace/Chat/bin/tmp1.txt");
-			PrintWriter os = new PrintWriter(socket.getOutputStream());
-			byte buffer[] = new byte[n];
-			while((c=rf.read(buffer, 0, n))!=-1){
-				os.println(new String(buffer, 0, c));
-				os.flush();
+		try {
+			int length;
+			byte[] sendBytes;
+			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+			File file = new File("/home/nightwatcher/workspace/Chat/bin/tmp1.txt");
+			FileInputStream fis = new FileInputStream(file);
+			sendBytes = new byte[1024];
+			while ((length = fis.read(sendBytes, 0, sendBytes.length)) > 0) {
+				dos.write(sendBytes, 0, length);
+				dos.flush();
 			}
-// 			os.close();
-			rf.close();
-		}catch(IOException e){
-			System.out.println(e);
+			fis.close();
+			dos.close();
+		}catch (Exception e) {
+        	e.printStackTrace();
 		}
+		
+		
+		
+//		try{
+//			int n = 512, c = 0;
+//			FileInputStream rf = new FileInputStream("/home/nightwatcher/workspace/Chat/bin/tmp1.txt");
+//			PrintWriter os = new PrintWriter(socket.getOutputStream());
+//			byte buffer[] = new byte[n];
+//			while((c=rf.read(buffer, 0, n))!=-1){
+//				os.println(new String(buffer, 0, c));
+//				os.flush();
+//			}
+//			rf.close();
+//		}catch(IOException e){
+//			System.out.println(e);
+//		}
 
 		
 		

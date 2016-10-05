@@ -35,12 +35,12 @@ public class Client{
 			 }
 			case "g":{
 				client.getFile();
-				System.out.println("Typing again to confirm it.");
+				//System.out.println("Typing again to confirm it.");
 				break;
 			}
 			case "s":{
 				client.sendFile();
-				System.out.println("Typing again to confirm it.");
+				//System.out.println("Typing again to confirm it.");
 				break;
 			}
 		}while(!cmd.equals("q"));

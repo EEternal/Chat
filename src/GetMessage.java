@@ -3,8 +3,7 @@ import java.net.*;
 public class GetMessage extends Thread{
 	private
 		Socket socket;
-	public
-		GetMessage(Socket socket){
+	public GetMessage(Socket socket){
 			this.socket = socket;
 		}
 		public void run(){

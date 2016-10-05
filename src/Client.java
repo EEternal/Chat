@@ -4,22 +4,21 @@ import java.util.Scanner;
 public class Client{
 	private 
 		String ip;
-	public 
-		Client(String ip){
+	public Client(String ip){
 			this.ip = ip;
 		}
-		void startWork() throws IOException{
+	public	void startWork() throws IOException{
 			Socket socket = new Socket(ip, 4700);
 			new GetMessage(socket).start();
 			new SendMessage(socket).start();
 		}
-		void getFile() throws IOException{
-			Socket socket = new Socket(ip, 4700);
-			new GetFile(socket).start();
-		}
-		void sendFile() throws IOException{
+	public	void sendFile() throws IOException{
 			Socket socket = new Socket(ip, 4700);
 			new SendFile(socket).start();
+		}
+	public	void getFile() throws IOException{
+			Socket socket = new Socket(ip, 4700);
+			new GetFile(socket).start();
 		}
 	public static void main(String args[]) throws IOException{
 		Client client = new Client(args[0]);
@@ -33,13 +32,15 @@ public class Client{
 				 System.out.println("Typing again to confirm it.");
 				 break;
 			 }
-			case "g":{
-				client.getFile();
-				//System.out.println("Typing again to confirm it.");
+			case "s":{
+				S.main(args);
+//				client.sendFile();
+//				System.out.println("Typing again to confirm it.");
 				break;
 			}
-			case "s":{
-				client.sendFile();
+			case "g":{
+				G.main(args);
+				//client.getFile();
 				//System.out.println("Typing again to confirm it.");
 				break;
 			}

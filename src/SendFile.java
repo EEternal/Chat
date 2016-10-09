@@ -8,35 +8,19 @@ public class SendFile extends Thread{
 		}
 	public void run(){
 		try{
-			int n = 512, c = 0;
-			FileInputStream rf = new FileInputStream("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt");
+			BufferedReader br = new BufferedReader(new FileReader("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt"));
+			//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			PrintWriter os = new PrintWriter(socket.getOutputStream());
-			byte buffer[] = new byte[n];
-			while((c=rf.read(buffer, 0, n))!=-1){
-				os.println(new String(buffer, 0, c));
+			String line = br.readLine();
+			while((line=br.readLine())!=null){
+				os.println(line);
 				os.flush();
 			}
-			rf.close();
+			os.flush();
+			os.close();
+			br.close();
 		}catch(IOException e){
-			System.out.println(e);
+			System.out.println("Error:"+e);
 		}
-
-		
-		
-//		try{
-//			BufferedReader sin = new BufferedReader(new InputStreamReader(new FileInputStream("/home/nightwatcher/workspace/Chat/bin/tmp1.txt")));
-//			PrintWriter os = new PrintWriter(socket.getOutputStream());
-//			String line = sin.readLine();
-//			while(!(line == null || line.trim().length() == 0)){
-//				//os.println(line);
-//				os.flush();
-//				line = sin.readLine();
-//			}
-//			os.close();
-//			sin.close();
-//			socket.close();
-//		}catch(IOException e){
-//			System.out.println("Error:"+e);
-//		}
 	}
 }

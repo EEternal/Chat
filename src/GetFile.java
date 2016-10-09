@@ -6,36 +6,23 @@ public class GetFile extends Thread{
 	public GetFile(Socket socket){
 			this.socket = socket;
 		}
-	public void run(){
-		try{
-			int length;
-			DataInputStream dis = new DataInputStream(socket.getInputStream());
-            FileOutputStream fos = new FileOutputStream(new File("/home/nightwatcher/workspace/Chat/Chat/bin/tmp2.txt"));
-            byte inputByte[] = new byte[1024];
-            System.out.println("开始接收数据...");
-            while ((length = dis.read(inputByte, 0, inputByte.length)) > 0) {
-                System.out.println(length);
-                fos.write(inputByte, 0, length);
-                fos.flush();
-            }
-            fos.close();
-            System.out.println("完成接收");
-		}catch (IOException e){
-			System.out.println("Error:"+e);
-		}
-	        
-//			try{
-//				BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//				String line = is.readLine();
-//				BufferedWriter bw = new BufferedWriter(new FileWriter("/home/nightwatcher/workspace/Chat/bin/tmp2.txt"));
-//				while(!(line == null || line.trim().length() == 0)){
-//					bw.write(line);
+		public void run(){
+			try{
+				BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				BufferedWriter bw = new BufferedWriter(new FileWriter("/home/nightwatcher/workspace/Chat/Chat/bin/tmp2.txt"));
+				String line = is.readLine();
+//				if(line.equals("c"))
 //					line = is.readLine();
-//					bw.flush();
-//				}
-//				bw.close();
-//			}catch (IOException e){
-//				System.out.println("Error:"+e);
-//			}
+				while(line!=null){
+					//System.out.println(line);
+					bw.write(line);
+					bw.flush();
+					line = is.readLine();
+				}
+				bw.close();
+				is.close();
+			}catch (IOException e){
+				System.out.println("Error:"+e);
+			}
 		}
 }

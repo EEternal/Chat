@@ -40,6 +40,7 @@ public class ServerThread extends Thread{
 				line = is.readLine();
 			}
 			os.close();
+			is.close();
 			socket.close();
 		}catch(Exception e){
 			System.out.println("Error:"+e);

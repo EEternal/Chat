@@ -9,7 +9,7 @@ public class SendFile extends Thread{
 	public void run(){
 		try{
 			int n = 512, c = 0;
-			FileInputStream rf = new FileInputStream("/home/nightwatcher/workspace/Chat/bin/tmp1.txt");
+			FileInputStream rf = new FileInputStream("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt");
 			PrintWriter os = new PrintWriter(socket.getOutputStream());
 			byte buffer[] = new byte[n];
 			while((c=rf.read(buffer, 0, n))!=-1){

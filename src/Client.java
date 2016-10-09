@@ -33,15 +33,15 @@ public class Client{
 				 break;
 			 }
 			case "s":{
-				S.main(args);
-//				client.sendFile();
-//				System.out.println("Typing again to confirm it.");
+//				S.main(args);
+				client.sendFile();
+				System.out.println("Typing again to confirm it.");
 				break;
 			}
 			case "g":{
-				G.main(args);
-				//client.getFile();
-				//System.out.println("Typing again to confirm it.");
+//				G.main(args);
+				client.getFile();
+//				System.out.println("Typing again to confirm it.");
 				break;
 			}
 		}while(!cmd.equals("q"));

@@ -8,16 +8,18 @@ public class GetFile extends Thread{
 		}
 	public void run(){
 		try{
-			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			BufferedWriter bw = new BufferedWriter(new FileWriter("/home/nightwatcher/workspace/Chat/bin/tmp2.txt"));
-			String line = is.readLine();
-			while(!(line == null)){
-				bw.write(line);
-				line = is.readLine();
-				bw.flush();
-			}
-			bw.close();
-			socket.close();
+			int length;
+			DataInputStream dis = new DataInputStream(socket.getInputStream());
+            FileOutputStream fos = new FileOutputStream(new File("/home/nightwatcher/workspace/Chat/Chat/bin/tmp2.txt"));
+            byte inputByte[] = new byte[1024];
+            System.out.println("开始接收数据...");
+            while ((length = dis.read(inputByte, 0, inputByte.length)) > 0) {
+                System.out.println(length);
+                fos.write(inputByte, 0, length);
+                fos.flush();
+            }
+            fos.close();
+            System.out.println("完成接收");
 		}catch (IOException e){
 			System.out.println("Error:"+e);
 		}

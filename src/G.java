@@ -37,7 +37,7 @@ public class G implements Runnable {
         try {
             try {
                 dis = new DataInputStream(socket.getInputStream());
-                fos = new FileOutputStream(new File("/home/nightwatcher/workspace/Chat/bin/tmp2.txt"));
+                fos = new FileOutputStream(new File("/home/nightwatcher/workspace/Chat/Chat/bin/tmp2.txt"));
                 inputByte = new byte[1024];
                 System.out.println("开始接收数据...");
                 while ((length = dis.read(inputByte, 0, inputByte.length)) > 0) {

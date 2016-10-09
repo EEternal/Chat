@@ -17,7 +17,7 @@ public class S{
                 socket.connect(new InetSocketAddress("127.0.0.1", 33456),
                                10 * 1000);
                 dos = new DataOutputStream(socket.getOutputStream());
-                File file = new File("/home/nightwatcher/workspace/Chat/bin/tmp1.txt");
+                File file = new File("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt");
                 fis = new FileInputStream(file);
                 sendBytes = new byte[1024];
                 while ((length = fis.read(sendBytes, 0, sendBytes.length)) > 0) {

@@ -8,13 +8,14 @@ public class SendFile extends Thread{
 		}
 	public void run(){
 		try{
-			BufferedReader br = new BufferedReader(new FileReader("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt"));
-			//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//			BufferedReader br = new BufferedReader(new FileReader("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt"));
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			PrintWriter os = new PrintWriter(socket.getOutputStream());
 			String line = br.readLine();
-			while((line=br.readLine())!=null){
+			while(!line.equals("bye")){
 				os.println(line);
 				os.flush();
+				line = br.readLine();
 			}
 			os.flush();
 			os.close();

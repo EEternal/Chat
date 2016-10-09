@@ -29,7 +29,7 @@ public class ServerThread extends Thread{
 			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));				
 			String line = is.readLine();
 			PrintWriter os = null;
-			while (line!=null){
+			while (!line.equals("bye")){
 				for(int i=0; i<sockets.size(); i++){
 					if(i == clientnum-1)
 						continue;

@@ -13,7 +13,8 @@ public class GetFile extends Thread{
 				String line = is.readLine();
 //				if(line.equals("c"))
 //					line = is.readLine();
-				while(line!=null){
+//				while(line!=null){
+				while(!line.equals("bye")){
 					//System.out.println(line);
 					bw.write(line);
 					bw.flush();

@@ -17,8 +17,10 @@ public class ServerThread extends Thread{
 			String str = is.readLine();
 			if(str.equals("c"))
 				chat();
-			else if(str.equals("s"))
+			else if(str.equals("s")){
 				file();
+//				System.out.println("File()");
+			}
 			is.close();
 		}catch(Exception e){
 			System.out.println("Error:"+e);
@@ -28,8 +30,15 @@ public class ServerThread extends Thread{
 		try {
 			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));				
 			String line = is.readLine();
+//			System.out.println("here");
+			if (line==null)
+				System.out.println("null");
 			PrintWriter os = null;
-			while (!line.equals("bye")){
+//			while (!line.equals("bye")){
+			while(line!=null){
+				
+				//System.out.println(line);
+				
 				for(int i=0; i<sockets.size(); i++){
 					if(i == clientnum-1)
 						continue;

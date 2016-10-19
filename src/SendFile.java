@@ -13,6 +13,8 @@ public class SendFile extends Thread{
 			String tmpline = tmp.readLine();
 			os.println(tmpline);
 			os.flush();
+			tmpline = tmp.readLine();
+			os.println(tmpline);
 			tmp.close();
 			BufferedReader br = new BufferedReader(new FileReader("/home/nightwatcher/workspace/Chat/Chat/bin/tmp1.txt"));
 //			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

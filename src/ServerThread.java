@@ -28,24 +28,27 @@ public class ServerThread extends Thread{
 	}
 	public void file(){
 		try {
-			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));				
+			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			String ID = is.readLine();
 			String line = is.readLine();
 //			System.out.println("here");
 			if (line==null)
 				System.out.println("null");
 			PrintWriter os = null;
 //			while (!line.equals("bye")){
+			int j=Integer.parseInt(ID)-1;
 			while(line!=null){
-				
 				//System.out.println(line);
-				
-				for(int i=0; i<sockets.size(); i++){
-					if(i == clientnum-1)
-						continue;
-					os = new PrintWriter(sockets.get(i).getOutputStream());
-					os.println(line);
-					os.flush();
-				}
+				os = new PrintWriter(sockets.get(j).getOutputStream());
+				os.println(line);
+				os.flush();
+//				for(int i=0; i<sockets.size(); i++){
+//					if(i == clientnum-1)
+//						continue;
+//					os = new PrintWriter(sockets.get(i).getOutputStream());
+//					os.println(line);
+//					os.flush();
+//				}
 				line = is.readLine();
 			}
 			os.close();

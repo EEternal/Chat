@@ -58,16 +58,22 @@ public class ServerThread extends Thread{
 	public void chat(){
 		try {
 			BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));				
+			String ID = is.readLine();
 			String line = is.readLine();
 			PrintWriter os = null;
 			while (!line.equals("bye")){
-				for(int i=0; i<sockets.size(); i++){
-					if(i == clientnum-1)
-						continue;
-					os = new PrintWriter(sockets.get(i).getOutputStream());
-					os.println(clientnum+"say: "+line);
-					os.flush();
-				}
+//				for(int i=0; i<sockets.size(); i++){
+//					if(i == clientnum-1)
+//						continue;
+//					os = new PrintWriter(sockets.get(i).getOutputStream());
+//					os.println(clientnum+"say: "+line);
+//					os.flush();
+//				}
+				int i=Integer.parseInt(ID)-1;
+				os = new PrintWriter(sockets.get(i).getOutputStream());
+				os.println(clientnum+"say: "+line);
+				os.flush();
+				ID = is.readLine();
 				line = is.readLine();
 			}
 			os.close();
